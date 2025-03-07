@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>My GitHub Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             background-color: #f4f4f4;
         }
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 50px auto;
             padding: 20px;
             background: white;
@@ -23,38 +23,64 @@
         h1 {
             color: #333;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            padding: 20px;
+        .file-list {
+            list-style: none;
+            padding: 0;
         }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        .file-list li {
+            margin: 10px 0;
+        }
+        .file-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .file-list a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Image Gallery</h1>
-        <p>Here are some images uploaded to this repository:</p>
-        <div class="gallery">
+        <h1>Welcome to My GitHub Website</h1>
+        <p>Here you can download my Excel files:</p>
+        <ul class="file-list">
             <script>
-                const images = ["image1.jpg", "image2.jpg", "image3.jpg"]; // Add your image filenames here
-                const repoURL = "https://xinghanwen2.github.io/xingWeb/"; // Base URL for GitHub Pages
-                const galleryContainer = document.querySelector(".gallery");
+                // Chinese filenames must be properly encoded
+                const repoURL = "https://xinghanwen2.github.io/xingWeb/";
+                const files = [
+                    "2025三月1号消费 - Copy.xlsx",
+                    "2025三月2号消费.xlsx",
+                    "2025三月3号消费.xlsx",
+                    "2025三月4号消费 - Copy.xlsx",
+                    "2025三月5号消费 - Copy - Copy.xlsx",
+                    "2025三月6号消费 - Copy - Copy - Copy.xlsx",
+                    "2025三月7号消费.xlsx",
+                    "2025三月17号消费.xlsx",
+                    "2025三月18号消费 - Copy.xlsx",
+                    "2025三月19号消费.xlsx",
+                    "2025三月20号消费 - Copy.xlsx",
+                    "2025三月21号消费 - Copy - Copy.xlsx",
+                    "2025三月24号消费.xlsx",
+                    "2025三月25号消费 - Copy.xlsx",
+                    "2025三月26号消费 - Copy - Copy.xlsx",
+                    "2025三月27号消费.xlsx",
+                    "2025三月28号消费.xlsx",
+                    "2025三月周末消费23号24号.xlsx"
+                ];
+                const listContainer = document.querySelector(".file-list");
 
-                images.forEach(image => {
-                    let imgElement = document.createElement("img");
-                    imgElement.src = repoURL + image;
-                    imgElement.alt = "Gallery Image";
-                    galleryContainer.appendChild(imgElement);
+                files.forEach(file => {
+                    let listItem = document.createElement("li");
+                    let link = document.createElement("a");
+                    link.href = repoURL + encodeURIComponent(file); // Encode Chinese characters
+                    link.textContent = file;
+                    link.setAttribute("download", file);
+                    listItem.appendChild(link);
+                    listContainer.appendChild(listItem);
                 });
             </script>
-        </div>
+        </ul>
     </div>
 </body>
 </html>
