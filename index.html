@@ -38,44 +38,27 @@
         .file-list a:hover {
             text-decoration: underline;
         }
-        /* Slideshow Styles */
+        
+        /* Fixed Slideshow Container */
         .slideshow-container {
             position: relative;
             max-width: 800px;
+            height: 450px; /* Set a fixed height */
             margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #ddd; /* Optional background */
         }
+
+        /* Ensure All Images Fit the Container */
         .slides {
             display: none;
             width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures proper cropping */
+            object-position: center; /* Centers the image */
             border-radius: 8px;
         }
-        .fade {
-            animation: fadeEffect 2s;
-        }
-        @keyframes fadeEffect {
-            from {opacity: 0.4} 
-            to {opacity: 1}
-        }
-        /* Fixed Slideshow Container */
-    .slideshow-container {
-    position: relative;
-    max-width: 800px; /* Set a fixed width */
-    height: 450px; /* Set a fixed height */
-    margin: auto;
-    overflow: hidden; /* Prevent images from overflowing */
-    border-radius: 8px;
-    background-color: #ddd; /* Optional: Adds a neutral background */
-    }
-
-       /* Ensure All Images Fit the Container */
-    .slides {
-    display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image fills the area without distortion */
-    border-radius: 8px;
-    }
-
     </style>
 </head>
 <body>
@@ -111,7 +94,7 @@
                 slideIndex++;
                 if (slideIndex > slides.length) { slideIndex = 1; }
                 slides[slideIndex - 1].style.display = "block";
-                setTimeout(showSlides, 3000); // Change image every 3 seconds
+                setTimeout(showSlides, 3000); // Ensures continuous looping
             }
             showSlides();
         </script>
